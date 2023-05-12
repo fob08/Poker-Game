@@ -2,6 +2,17 @@ class Card():
     SUITS = ("Hearts", "Clubs", "Spades", "Diamonds")
     RANKS = ("2", "3", "4", "5", "6", "7", "8", "9", "10", 
              "Ace", "Queen", "Jack", "King")
+    
+    @classmethod
+    def create_standard_52_cards(cls):
+        cards = []
+        for suit in cls.SUITS:
+            for rank in cls.RANKS:
+                cards.append(cls(rank = rank,suit = suit))
+        return cards
+
+
+
     def __init__(self, rank, suit):
         self.rank = rank
         self.suit = suit
@@ -18,4 +29,8 @@ class Card():
     
     def __repr__(self) -> str:
         return f"Card('{self.rank}', '{self.suit}')"
+    
+    def __eq__(self, other: object) -> bool:
+        return self.rank == other.rank and self.suit == other.suit
+    
     
