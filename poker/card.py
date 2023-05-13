@@ -1,7 +1,7 @@
 class Card():
     SUITS = ("Hearts", "Clubs", "Spades", "Diamonds")
     RANKS = ("2", "3", "4", "5", "6", "7", "8", "9", "10", 
-             "Ace", "Queen", "Jack", "King")
+             "Jack", "Queen", "King", "Ace")
     
     @classmethod
     def create_standard_52_cards(cls):
@@ -16,6 +16,7 @@ class Card():
     def __init__(self, rank, suit):
         self.rank = rank
         self.suit = suit
+        self.rank_index = self.RANKS.index(rank)
         if rank not in self.RANKS:
             raise ValueError(f"Invalid rank, your rank is {self.rank}. Your rank can be any of {self.RANKS}")
         
@@ -32,5 +33,8 @@ class Card():
     
     def __eq__(self, other: object) -> bool:
         return self.rank == other.rank and self.suit == other.suit
+    
+    def __lt__(self, other):
+        return self.rank_index < other.rank_index
     
     
