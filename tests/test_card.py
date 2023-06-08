@@ -71,11 +71,11 @@ class CardTest(unittest.TestCase):
         ace_of_clubs = Card(rank = "Ace", suit = "Clubs")
 
         unsorted_cards = [
+            six_of_hearts,
             six_of_diamonds,
             eight_of_spades,
             two_of_spades,
             ace_of_clubs,
-            six_of_hearts
         ]
         unsorted_cards.sort()
 
