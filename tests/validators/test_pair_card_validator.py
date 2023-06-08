@@ -11,7 +11,7 @@ class PairCardValidatorTest(unittest.TestCase):
         ]
         validator = PairValidator(cards = cards)
         
-        self.assertEqual(validator.is_valid, True)
+        self.assertEqual(validator.is_valid(), True)
 
     def test_returns_pair_from_card_collection(self):
         ten_of_spades = Card(rank= "10", suit = "Spades")
