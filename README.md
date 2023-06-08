@@ -13,4 +13,4 @@ Currently, the project follows most of the rules of a poker game by implementing
 I will be improving this code to capture more intricate rules and cater for some edge case bugs that might come up.
 
 ## Source
-This app is based of the Learn to Code with Python tutorial of Boris Paskhaver @BorisPaskhaver
+This app is based of the [Learn to Code with Python](https://www.udemy.com/course/learn-to-code-with-python/) tutorial of Boris Paskhaver @BorisPaskhaver
