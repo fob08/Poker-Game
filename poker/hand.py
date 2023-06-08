@@ -1,9 +1,16 @@
 class Hand():
-    def __init__(self,cards):
-        card_copy = cards[:]
+    def __init__(self):
+        self.cards = []
+
+    def __repr__(self):
+        cards_as_strings = [str(card) for card in self.cards]
+        return ", ".join(cards_as_strings)
+
+    def add_cards(self,cards):
+        card_copy = self.cards[:]
+        card_copy.extend(cards)
         card_copy.sort()
         self.cards = card_copy
-
 
     @property
     def _rank_validation_from_best_to_worst(self):
@@ -17,7 +24,8 @@ class Hand():
             ("Three of a Kind", self._three_of_a_kind),
             ("Two Pair", self._two_pair),
             ("Pair", self._pair),
-            ("High Card", self._high_card)
+            ("High Card", self._high_card),
+            ("No Cards", self._no_cards)
         )
 
     def best_rank(self):
@@ -70,6 +78,9 @@ class Hand():
     
     def _royal_flush(self):
         is_straight_flush = self._straight_flush()
+        if not is_straight_flush:
+            return False
+        
         is_royal = self.cards[-1].rank == "Ace"
         return is_straight_flush and is_royal
 
@@ -114,7 +125,10 @@ class Hand():
          return len(rank_with_pairs) == 1
     
     def _high_card(self):
-        return True
+        return len(self.cards) >= 2
+    
+    def _no_cards(self):
+        return len(self.cards) == 0
     
     @property
     def _card_rank_counts(self):
